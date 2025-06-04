@@ -629,10 +629,12 @@
 
 <!-- 功能使用说明区域 -->
 <div class="section" style="margin-top: 24px; background: #f8fafc; border-radius: 12px; padding: 24px; border: 1px solid #e2e8f0;">
-    <div class="section-title" style="font-size: 1.1rem; color: #4f46e5; margin-bottom: 12px;">
-        <i class="fas fa-info-circle"></i> 功能使用说明
+    <div class="section-title collapsible" id="guideToggle" style="font-size: 1.1rem; color: #4f46e5; margin-bottom: 12px; cursor:pointer; user-select:none; display: flex; align-items: center;">
+        <i class="fas fa-info-circle"></i>
+        <span style="margin-left: 6px;">功能使用说明</span>
+        <i id="guideArrow" class="fas fa-chevron-down" style="margin-left: auto; transition: transform 0.3s;"></i>
     </div>
-    <div style="color: #334155; font-size: 1rem; line-height: 1.8;">
+    <div id="guideContent" style="color: #334155; font-size: 1rem; line-height: 1.8;">
         <b>1. 替换配置：</b><br>
         在左侧“替换配置”区域，可自定义多组查找与替换规则，支持区分大小写、正则表达式、全词匹配等选项，并可选择常用预设模板（如大小写转换、HTML实体转换等）。<br><br>
         <b>2. 输入与处理：</b><br>
@@ -652,6 +654,25 @@
         如需帮助或有建议，欢迎反馈！
     </div>
 </div>
+<script>
+// 折叠功能说明
+(function(){
+    var toggle = document.getElementById('guideToggle');
+    var content = document.getElementById('guideContent');
+    var arrow = document.getElementById('guideArrow');
+    if(toggle && content && arrow) {
+        toggle.addEventListener('click', function() {
+            if(content.style.display === 'none') {
+                content.style.display = '';
+                arrow.style.transform = '';
+            } else {
+                content.style.display = 'none';
+                arrow.style.transform = 'rotate(-90deg)';
+            }
+        });
+    }
+})();
+</script>
             </div>
         </div>
     </div>
